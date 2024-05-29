@@ -10,25 +10,33 @@ int main()
 
     cout << "Welcome to the show.\n\n";
 
-    while (input != 2) { //formed like an if statement. dont put true or it will never end
-      
+    while (input != 3) { //formed like an if statement. dont put true or it will never end
+
         //clear the input buffer
-        cin.clear();
-    
+
         //print the menu
         cout << "Select an option:\n\n";
         cout << "1: Print A\n";
-        cout << "2: Exit Program\n";
+        cout << "2: Print Ax1000\n";
+        cout << "3: Exit Program\n";
         cin >> input;
 
         //Option 1
         if (input == 1) {
-            cout << "AAAAAAAAAAAAAA\n\n";
+            cout << "A\n\n";
         }
 
+        //Option 2
+        else if (input == 2) {
+            // for loops initialization; condition; incrementation; 
+            for (int i = 0; i < 1000; i++) { //i=i+1//i+=1//i++ all work the same
+                cout << "A";
+            }
+            cout << "\n\n";
+        }
     }
-
     cout << "\nI'm done with you.\n";
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
