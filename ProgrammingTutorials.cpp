@@ -6,58 +6,29 @@ using namespace std;
 
 int main()
 {
-    int x = 5;
-    int y = 2 + 4;
+    int input = -1;
 
-    bool isHigh = x >= 10;  //name bool value in a logical way that explains
+    cout << "Welcome to the show.\n\n";
 
-
-    // Exmple of if statement conditions
-    // < less than  
-    // > greater than   
-    // == equal to
-    // != not equal to  
-    // <= less than or equal to
-    // >= greater than or equal to
-
-    if (!isHigh) {
-        cout << "x is not greater than or equal to 10\n\n";
-    }
-    else {
-        cout << "x is not less than ten\n\n";
-    }
-
-    if (true) { //you can chain if statements together
-
-    }
-    else if (false) {
-
-    }
-    else {
-
-    }
-
-    if (int w = 10 + 4) { // unlikely to need this, but you can declare a variable inside the if statement condition
-
-        cout << w << "\n";
-    }
-
-    if (x == 10) { //== tests equivalence
-
-        cout << "True\n\n"; // This will never be true
-    }
-    else {
-        int z = 20;
-        cout << z << "\n";
-        cout << "False\n\n";
-        
-    }
+    while (input != 2) { //formed like an if statement. dont put true or it will never end
+      
+        //clear the input buffer
+        cin.clear();
     
-    
+        //print the menu
+        cout << "Select an option:\n\n";
+        cout << "1: Print A\n";
+        cout << "2: Exit Program\n";
+        cin >> input;
 
+        //Option 1
+        if (input == 1) {
+            cout << "AAAAAAAAAAAAAA\n\n";
+        }
 
-    //cout << z << "\n"; doesnt work due to z out of scope
-    cout << "End of Program\n";
+    }
+
+    cout << "\nI'm done with you.\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
