@@ -8,7 +8,27 @@ int main()
 {
     int x = 5;
     int y = 2 + 4;
-    cout << x + y;
+
+
+    // unlikely to need this, but you can declare a variable inside the if statement condition
+
+    if (int w = 10 + 4) {
+        cout << w << "\n";
+    }
+
+    if (x == 10) { //== tests equivalence
+
+        cout << "True\n\n"; // This will never be true
+    }
+    else {
+        int z = 20;
+        cout << z << "\n";
+        cout << "False\n\n";
+        
+    }
+
+    //cout << z << "\n"; doesnt work due to z out of scope
+    cout << "End of Program\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
