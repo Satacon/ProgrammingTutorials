@@ -9,10 +9,36 @@ int main()
     int x = 5;
     int y = 2 + 4;
 
+    bool isHigh = x >= 10;  //name bool value in a logical way that explains
 
-    // unlikely to need this, but you can declare a variable inside the if statement condition
 
-    if (int w = 10 + 4) {
+    // Exmple of if statement conditions
+    // < less than  
+    // > greater than   
+    // == equal to
+    // != not equal to  
+    // <= less than or equal to
+    // >= greater than or equal to
+
+    if (!isHigh) {
+        cout << "x is not greater than or equal to 10\n\n";
+    }
+    else {
+        cout << "x is not less than ten\n\n";
+    }
+
+    if (true) { //you can chain if statements together
+
+    }
+    else if (false) {
+
+    }
+    else {
+
+    }
+
+    if (int w = 10 + 4) { // unlikely to need this, but you can declare a variable inside the if statement condition
+
         cout << w << "\n";
     }
 
@@ -26,6 +52,9 @@ int main()
         cout << "False\n\n";
         
     }
+    
+    
+
 
     //cout << z << "\n"; doesnt work due to z out of scope
     cout << "End of Program\n";
