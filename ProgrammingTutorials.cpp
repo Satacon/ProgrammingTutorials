@@ -7,6 +7,24 @@ using namespace std;
 int main()
 {
     int input = -1;
+    int i;            // stores whole integer
+    double d;         //stores decimal number
+    float f = 0.0f;   //decimal number similar to double, but stored differently. vectors always use floats
+    bool b = false;   //true or false, 0 or 1
+    char c = '0';     //stores a single character
+    string s = "0";   //string of characters, technically a class
+
+
+    int numbers[10]{     //must be in range, otherwise it prints unknown garbagedata
+        1,2,3,4,5,6,7,8,9,10
+    };
+        
+    cout << numbers[4] << "\n";
+
+    for (int i = 0; i < 10; i++) {
+        cout << numbers[i] << "\n";
+    }
+
 
     cout << "Welcome to the show.\n\n";
 
