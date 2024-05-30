@@ -1,59 +1,94 @@
 // ProgrammingTutorials.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+// PascalCase
+// camelCase
+// snake_case
+// MACRO_CASE
+
 
 #include <iostream>
 using namespace std;
 
+//constant variables
+const int PRINT = 1;
+const int PRINT_MANY = 2;
+const int ENTER_PHRASE = 3;
+const int EXIT = 4;
+
+
+void printChar(char c) {
+    std::cout << c;
+}
+
+void printA() {
+    printChar('A');
+}
+
+
+void printString(string phrase) {
+    std::cout << phrase;
+}
+
+
 int main()
 {
+    
+    std::cout << "Welcome to the show.\n\n";
+
     int input = -1;
-    int i;            // stores whole integer
-    double d;         //stores decimal number
-    float f = 0.0f;   //decimal number similar to double, but stored differently. vectors always use floats
-    bool b = false;   //true or false, 0 or 1
-    char c = '0';     //stores a single character
-    string s = "0";   //string of characters, technically a class
-
-
-    int numbers[10]{     //must be in range, otherwise it prints unknown garbagedata
-        1,2,3,4,5,6,7,8,9,10
-    };
-        
-    cout << numbers[4] << "\n";
-
-    for (int i = 0; i < 10; i++) {
-        cout << numbers[i] << "\n";
-    }
-
-
-    cout << "Welcome to the show.\n\n";
-
-    while (input != 3) { //formed like an if statement. dont put true or it will never end
+    string phrase = "A";
+    while (input != EXIT) { //formed like an if statement. dont put true or it will never end
 
         //clear the input buffer
 
         //print the menu
-        cout << "Select an option:\n\n";
-        cout << "1: Print A\n";
-        cout << "2: Print Ax1000\n";
-        cout << "3: Exit Program\n";
-        cin >> input;
+        std::cout << "Select an option:\n\n";
+        std::cout << PRINT          <<": Print " << phrase << "\n";
+        std::cout << PRINT_MANY     <<": Print " << phrase << "x1000\n";
+        std::cout << ENTER_PHRASE   <<": Enter phrase\n";
+        std::cout << EXIT           <<": Exit Program\n";
+        std::cin >> input;
 
-        //Option 1
-        if (input == 1) {
-            cout << "A\n\n";
-        }
+        switch (input) {
+        case PRINT:
+            printString(phrase);
+            break;
 
-        //Option 2
-        else if (input == 2) {
-            // for loops initialization; condition; incrementation; 
+        case PRINT_MANY:
             for (int i = 0; i < 1000; i++) { //i=i+1//i+=1//i++ all work the same
-                cout << "A";
+                printString(phrase);
             }
-            cout << "\n\n";
+            break;
+
+        case ENTER_PHRASE:
+            std::cout << "Enter a phrase: ";
+            std::cin >> phrase;
+            break;
         }
+        std::cout << "\n\n";
+
+        ////Option 1
+        //if (input == PRINT) {
+        //    printString(phrase);
+        //}
+
+        ////Option 2
+        //else if (input == PRINT_MANY) {
+        //    // for loops initialization; condition; incrementation; 
+        //    for (int i = 0; i < 1000; i++) { //i=i+1//i+=1//i++ all work the same
+        //        printString(phrase);
+        //    }
+        //    
+        //}
+        ////Option 3
+        //else if (input == ENTER_PHRASE) {
+        //    std::cout << "Enter a phrase: ";
+        //    std::cin >> phrase;
+        //}
+        
+       /* std::cout << "\n\n";*/
     }
-    cout << "\nI'm done with you.\n";
+    std::cout << "\nI'm done with you.\n";
 
 }
 
