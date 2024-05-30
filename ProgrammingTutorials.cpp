@@ -7,62 +7,75 @@
 
 
 #include <iostream>
+#include "Fruit.h"
+
 using namespace std;
 
 //constant variables
-const int PRINT = 1;
-const int PRINT_MANY = 2;
-const int ENTER_PHRASE = 3;
+const int INSPECT = 1;
+const int TWIST = 2;
+const int PICK = 3;
 const int EXIT = 4;
 
+Fruit createFruit() {
+    Fruit newFruit;
+    newFruit.name = "Peach";
+    newFruit.ripeness = 5.0f;
+    newFruit.size = 4.0f;
+    newFruit.appeal = 7.0f;
 
-void printChar(char c) {
-    std::cout << c;
+    return newFruit;
 }
 
-void printA() {
-    printChar('A');
+
+//print the stats of the fruit and return its name
+std::string inspectFruit(Fruit fruit) {
+    //print fruit stats
+    std::cout << fruit.name << ":\n";
+    std::cout << "Ripeness: " << fruit.ripeness << ":\n";
+    std::cout << "    Size: " << fruit.size << ":\n";
+    std::cout << "  Appeal: " << fruit.appeal << ":\n";
+    //return fruit name
+    return fruit.name;
 }
-
-
-void printString(string phrase) {
-    std::cout << phrase;
-}
-
 
 int main()
 {
     
-    std::cout << "Welcome to the show.\n\n";
+    std::cout << "Welcome to the orchard.\n\n";
+
+    //Make a new fruit
+    Fruit currentFruit = createFruit();
+    string fruitName = "fruit";
 
     int input = -1;
-    string phrase = "A";
+   
     while (input != EXIT) { //formed like an if statement. dont put true or it will never end
 
         //clear the input buffer
 
         //print the menu
         std::cout << "Select an option:\n\n";
-        std::cout << PRINT          <<": Print " << phrase << "\n";
-        std::cout << PRINT_MANY     <<": Print " << phrase << "x1000\n";
-        std::cout << ENTER_PHRASE   <<": Enter phrase\n";
-        std::cout << EXIT           <<": Exit Program\n";
+        std::cout << INSPECT <<": Inspect " << fruitName << "\n";
+        std::cout << TWIST   <<": Twist.... nothing happens\n";
+        std::cout << PICK    <<": Pick.... nothing happens\n";
+        std::cout << EXIT    <<": Exit Program\n";
         std::cin >> input;
 
         switch (input) {
-        case PRINT:
-            printString(phrase);
-            break;
 
-        case PRINT_MANY:
-            for (int i = 0; i < 1000; i++) { //i=i+1//i+=1//i++ all work the same
-                printString(phrase);
-            }
+        //inspect the fruit
+        case INSPECT:
+            fruitName = inspectFruit(currentFruit);
             break;
-
-        case ENTER_PHRASE:
-            std::cout << "Enter a phrase: ";
-            std::cin >> phrase;
+        //twist the fruit
+        case TWIST:
+         
+            break;
+        //pick the fruit
+        //pick the fruit
+        case PICK:
+          
             break;
         }
         std::cout << "\n\n";
