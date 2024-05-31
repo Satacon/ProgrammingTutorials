@@ -5,7 +5,6 @@
 // snake_case
 // MACRO_CASE
 
-
 #include <iostream>
 #include "Fruit.h"
 
@@ -23,20 +22,53 @@ Fruit createFruit() {
     newFruit.ripeness = 5.0f;
     newFruit.size = 4.0f;
     newFruit.appeal = 7.0f;
+    newFruit.hp = newFruit.size;
 
     return newFruit;
 }
 
+//How to pick fruit
+//pick fruit when hp value becomes 0
+//when ripeness hits 10, the fruit falls off the branch and is lost
+//when you twist fruit, appeal drops by one, appeal affects the score, hp drops by one
+//size affects the max hp. hp is an equasion
 
 //print the stats of the fruit and return its name
 std::string inspectFruit(Fruit fruit) {
     //print fruit stats
-    std::cout << fruit.name << ":\n";
+    std::cout << "Name:     " << fruit.name << ":\n";
     std::cout << "Ripeness: " << fruit.ripeness << ":\n";
-    std::cout << "    Size: " << fruit.size << ":\n";
-    std::cout << "  Appeal: " << fruit.appeal << ":\n";
+    std::cout << "Size:     " << fruit.size << ":\n";
+    std::cout << "Appeal:   " << fruit.appeal << ":\n";
+    std::cout << "HP:       " << fruit.hp << ":\n";
     //return fruit name
     return fruit.name;
+}
+
+
+//pass in a parameter Fruit variable 
+float calculateDamage(Fruit damagedFruit) {
+    float damage = 1 + damagedFruit.size / damagedFruit.appeal;
+    return damage;
+}
+
+//Return 0 if fruit hasnt taken enough damage
+//Return 1 if fruit is in the perfect range for picking
+//Return 2 if fruit has taken too much damage
+int pickFruit(Fruit pickedFruit) {
+    //Fruit has been obliterated, took too much damage
+    if (pickedFruit.hp <= 0) {
+        return 2;
+    }
+    //Fruit is in the perfect range to be picked, 
+    else if (pickedFruit.hp < 1) {
+        return 1;
+    }
+     //Fruit is not weakened enough, needs damage
+    else {
+        return 0;
+
+    }
 }
 
 int main()
@@ -46,7 +78,8 @@ int main()
 
     //Make a new fruit
     Fruit currentFruit = createFruit();
-    string fruitName = "fruit";
+    string currentName = "fruit";
+
 
     int input = -1;
    
@@ -55,28 +88,43 @@ int main()
         //clear the input buffer
 
         //print the menu
-        std::cout << "Select an option:\n\n";
-        std::cout << INSPECT <<": Inspect " << fruitName << "\n";
-        std::cout << TWIST   <<": Twist.... nothing happens\n";
-        std::cout << PICK    <<": Pick.... nothing happens\n";
-        std::cout << EXIT    <<": Exit Program\n";
-        std::cin >> input;
+      
+        std::cout << INSPECT <<": Inspect " << currentName << "\n";
+        std::cout << TWIST   <<": Twist\n";
+        std::cout << PICK    <<": Pick\n";
+        std::cout << EXIT    <<": Exit Program\n\n";
+        std::cout << "Select an option: ";
+        std::cin >> input; 
+        std::cout << "\n\n";
 
         switch (input) {
 
-        //inspect the fruit
+            //inspect the fruit
         case INSPECT:
-            fruitName = inspectFruit(currentFruit);
+            currentName = inspectFruit(currentFruit);
             break;
-        //twist the fruit
-        case TWIST:
-         
-            break;
-        //pick the fruit
-        //pick the fruit
-        case PICK:
-          
-            break;
+            //twist the fruit
+        case TWIST: {
+            std::cout << "You twist forcefully yet delicately on the " << currentName << ".\n\n";
+            float currentDamage = calculateDamage(currentFruit);
+            currentFruit.hp -= currentDamage;
+            std::cout << "The " << currentName << " takes " << currentDamage << " damage.\n";
+        } break;
+            //pick the fruit
+            //pick the fruit
+        case PICK: {
+            int success = pickFruit(currentFruit);
+            std::cout << "You decisively reach out to pick the fruit.\n";
+                if (success == 1) {
+                    std::cout << "You got the fruit!\n\n";
+                }
+                else if (success == 2) {
+                    std::cout << "You destroyed the fruit!\n\n";
+                }
+                else {
+                    std::cout << "You failed to acquire fruit. Try something else.\n\n";
+                }
+        } break;
         }
         std::cout << "\n\n";
 
