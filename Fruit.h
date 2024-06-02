@@ -1,8 +1,21 @@
 #pragma once
 #include <string>
-struct Fruit {
+class Fruit {
+public:
 
-	// Listing the variables of the object fruit
+	Fruit();
+
+private:
+	int randRange(int min, int max);
+	float randRange(float min, float max);
+
+public:
+	//print the stats of the fruit and returns it name
+	std::string inspect();
+	//calculates damage of pick
+	float calculateDamage();
+	//harvests the fruit
+	int pick();
 
 	// The fruit's name 
 	std::string name = "fruit";

@@ -19,75 +19,10 @@ const int TWIST = 2;
 const int PICK = 3;
 const int EXIT = 4;
 
-
-// makes a random number within a range
-int randRange(int min, int max) {
-    int range = max - min + 1;
-    return  (rand() % range) + min;
-}
-
-//Cast the data type by putting it right infront of the value
-float randRange(float min, float max) {
-    float number = (float)rand() / (float)RAND_MAX;
-    float range = max - min;
-    return (number * range) + min;
- }
-
-
-Fruit createFruit() {
-    Fruit newFruit;
-    newFruit.name = newFruit.names[randRange(0,6)];
-    newFruit.ripeness = randRange(1.0f, 3.0f);
-    newFruit.size = randRange(5.0f, 10.f);
-    newFruit.appeal = randRange(1.0f, 3.0f);
-    newFruit.hp = newFruit.size + newFruit.ripeness;
-
-    return newFruit;
-}
-
 //How to pick fruit
 //pick fruit when hp value becomes 0
-//when ripeness hits 10, the fruit falls off the branch and is lost
-//when you twist fruit, appeal drops by one, appeal affects the score, hp drops by one
+//when you twist fruit, reduces hp 
 //size affects the max hp. hp is an equasion
-
-//print the stats of the fruit and return its name
-std::string inspectFruit(Fruit fruit) {
-    //print fruit stats
-    std::cout << "Name:     " <<fruit.name << "\n";
-    std::cout << "Ripeness: " << fruit.ripeness << "\n";
-    std::cout << "Size:     " << fruit.size << "\n";
-    std::cout << "Appeal:   " << fruit.appeal << "\n";
-    std::cout << "HP:       " << fruit.hp << "\n";
-    //return fruit name
-    return fruit.name;
-}
-
-
-//pass in a parameter Fruit variable 
-float calculateDamage(Fruit damagedFruit) {
-    float damage = 1 + damagedFruit.size / damagedFruit.appeal;
-    return damage;
-}
-
-//Return 0 if fruit hasnt taken enough damage
-//Return 1 if fruit is in the perfect range for picking
-//Return 2 if fruit has taken too much damage
-int pickFruit(Fruit pickedFruit) {
-    //Fruit has been obliterated, took too much damage
-    if (pickedFruit.hp <= 0) {
-        return 2;
-    }
-    //Fruit is in the perfect range to be picked, 
-    else if (pickedFruit.hp < 1) {
-        return 1;
-    }
-     //Fruit is not weakened enough, needs damage
-    else {
-        return 0;
-
-    }
-}
 
 int main()
 {
@@ -98,9 +33,6 @@ int main()
 
     srand(time(0));
     rand(); 
-    
-    std::cout << '\n';
-
 
     //Make a new fruit
     Fruit currentFruit = createFruit();
