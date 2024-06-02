@@ -6,7 +6,10 @@
 // MACRO_CASE
 
 #include <iostream>
+#include <time.h>
+#include <iomanip>
 #include "Fruit.h"
+
 
 using namespace std;
 
@@ -16,13 +19,28 @@ const int TWIST = 2;
 const int PICK = 3;
 const int EXIT = 4;
 
+
+// makes a random number within a range
+int randRange(int min, int max) {
+    int range = max - min + 1;
+    return  (rand() % range) + min;
+}
+
+//Cast the data type by putting it right infront of the value
+float randRange(float min, float max) {
+    float number = (float)rand() / (float)RAND_MAX;
+    float range = max - min;
+    return (number * range) + min;
+ }
+
+
 Fruit createFruit() {
     Fruit newFruit;
-    newFruit.name = "Peach";
-    newFruit.ripeness = 5.0f;
-    newFruit.size = 4.0f;
-    newFruit.appeal = 7.0f;
-    newFruit.hp = newFruit.size;
+    newFruit.name = newFruit.names[randRange(0,6)];
+    newFruit.ripeness = randRange(1.0f, 3.0f);
+    newFruit.size = randRange(5.0f, 10.f);
+    newFruit.appeal = randRange(1.0f, 3.0f);
+    newFruit.hp = newFruit.size + newFruit.ripeness;
 
     return newFruit;
 }
@@ -36,11 +54,11 @@ Fruit createFruit() {
 //print the stats of the fruit and return its name
 std::string inspectFruit(Fruit fruit) {
     //print fruit stats
-    std::cout << "Name:     " << fruit.name << ":\n";
-    std::cout << "Ripeness: " << fruit.ripeness << ":\n";
-    std::cout << "Size:     " << fruit.size << ":\n";
-    std::cout << "Appeal:   " << fruit.appeal << ":\n";
-    std::cout << "HP:       " << fruit.hp << ":\n";
+    std::cout << "Name:     " <<fruit.name << "\n";
+    std::cout << "Ripeness: " << fruit.ripeness << "\n";
+    std::cout << "Size:     " << fruit.size << "\n";
+    std::cout << "Appeal:   " << fruit.appeal << "\n";
+    std::cout << "HP:       " << fruit.hp << "\n";
     //return fruit name
     return fruit.name;
 }
@@ -73,13 +91,20 @@ int pickFruit(Fruit pickedFruit) {
 
 int main()
 {
+   
+    std::cout << setprecision(3);
+    std::cout << "Welcome to the orchard.\n\n";     
+    //Where the heck is the seed? We found the seed.
+
+    srand(time(0));
+    rand(); 
     
-    std::cout << "Welcome to the orchard.\n\n";
+    std::cout << '\n';
+
 
     //Make a new fruit
     Fruit currentFruit = createFruit();
     string currentName = "fruit";
-
 
     int input = -1;
    
