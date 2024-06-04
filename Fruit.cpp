@@ -1,6 +1,8 @@
 #include "Fruit.h"
 #include <iostream>
 
+
+//Constructor of default fruit
 Fruit::Fruit()
 {
     name = names[randRange(0, 6)];
@@ -53,4 +55,5 @@ int Fruit::pick()
     //Fruit is not weakened enough, needs damage
     else {
         return 0;
+    }
 }

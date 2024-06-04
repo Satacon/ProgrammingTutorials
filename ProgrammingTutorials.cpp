@@ -35,7 +35,8 @@ int main()
     rand(); 
 
     //Make a new fruit
-    Fruit currentFruit = createFruit();
+    //anytime you see NEW, you allocate some memory. Creates a new variable that stores the address of data.
+    Fruit* currentFruit = new Fruit(); //Constructor is instructions for initialization
     string currentName = "fruit";
 
     int input = -1;
@@ -58,19 +59,19 @@ int main()
 
             //inspect the fruit
         case INSPECT:
-            currentName = inspectFruit(currentFruit);
+            currentName = currentFruit->inspect();
             break;
             //twist the fruit
         case TWIST: {
             std::cout << "You twist forcefully yet delicately on the " << currentName << ".\n\n";
-            float currentDamage = calculateDamage(currentFruit);
-            currentFruit.hp -= currentDamage;
+            float currentDamage = currentFruit->calculateDamage();
+            currentFruit->hp -= currentDamage;
             std::cout << "The " << currentName << " takes " << currentDamage << " damage.\n";
         } break;
             //pick the fruit
             //pick the fruit
         case PICK: {
-            int success = pickFruit(currentFruit);
+            int success = currentFruit->pick();
             std::cout << "You decisively reach out to pick the fruit.\n";
                 if (success == 1) {
                     std::cout << "You got the fruit!\n\n";
@@ -106,6 +107,18 @@ int main()
         
        /* std::cout << "\n\n";*/
     }
+
+    //Cleanup 
+    delete currentFruit;
+    currentFruit = nullptr; //Sets reference to null
+   
+    //It is easy to check if something is nullptr
+    //If (currentFruit == nullptr) 
+    //return;
+
+    //if (!currentFruit)
+    //return;
+
     std::cout << "\nI'm done with you.\n";
 
 }
