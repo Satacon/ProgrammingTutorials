@@ -4,8 +4,9 @@ class Fruit {
 public:
 
 	Fruit();
+	~Fruit();
 
-private:
+protected:
 	int randRange(int min, int max);
 	float randRange(float min, float max);
 

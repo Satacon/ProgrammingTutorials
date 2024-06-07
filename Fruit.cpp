@@ -6,10 +6,18 @@
 Fruit::Fruit()
 {
     name = names[randRange(0, 6)];
-    ripeness = randRange(1.0f, 3.0f);
-    size = randRange(5.0f, 10.f);
-    appeal = randRange(1.0f, 3.0f);
+    ripeness = randRange(1.0f, 5.0f);
+    size = randRange(3.0f, 10.f);
+    appeal = randRange(1.0f, 10.0f);
     hp = size + ripeness;
+}
+
+Fruit::~Fruit()
+{
+    // The destructor is called when the object is deleted.
+    // Generally, the object that allocates memory must also delete that memory
+    // In other words the object that calls new should also call delete.
+    // The destructor is the place where delete is typically called.
 }
 
 int Fruit::randRange(int min, int max)
