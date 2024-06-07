@@ -10,6 +10,7 @@
 #include <iomanip>
 #include "Apple.h"
 #include "Cherry.h"
+#include "Random.h"
 
 
 using namespace std;
@@ -30,22 +31,31 @@ int main()
    
     std::cout << setprecision(3);
     std::cout << "Welcome to the orchard.\n\n";     
-    //Where the heck is the seed? We found the seed.
 
-    srand(time(0));
-    rand(); 
+    Random::seed();
+
 
     //Make a new fruit
-    //anytime you see NEW, you allocate some memory. Creates a new variable that stores the address of data.
-    //Constructor is instructions for initialization
-    Fruit* currentFruit = new Cherry(); 
+    int fruitNumber = Random::randRange(0, 1);
+    Fruit* currentFruit = new Fruit();
+    switch (fruitNumber) {
+    case 0:
+        delete currentFruit;
+        currentFruit = new Apple();
+        break;
+    case 1:
+        delete currentFruit;
+        currentFruit = new Cherry();
+        break;
+    default:
+        currentFruit = new Fruit();
+        currentFruit->name = "mystery fruit";
+    }
     string currentName = "fruit";
 
     int input = -1;
    
     while (input != EXIT) { //formed like an if statement. dont put true or it will never end
-
-        //clear the input buffer
 
         //print the menu
       
@@ -59,6 +69,7 @@ int main()
 
         switch (input) {
 
+            //inspect the fruit
             //inspect the fruit
         case INSPECT:
             currentName = currentFruit->inspect();
@@ -88,40 +99,13 @@ int main()
         }
         std::cout << "\n\n";
 
-        ////Option 1
-        //if (input == PRINT) {
-        //    printString(phrase);
-        //}
-
-        ////Option 2
-        //else if (input == PRINT_MANY) {
-        //    // for loops initialization; condition; incrementation; 
-        //    for (int i = 0; i < 1000; i++) { //i=i+1//i+=1//i++ all work the same
-        //        printString(phrase);
-        //    }
-        //    
-        //}
-        ////Option 3
-        //else if (input == ENTER_PHRASE) {
-        //    std::cout << "Enter a phrase: ";
-        //    std::cin >> phrase;
-        //}
-        
-       /* std::cout << "\n\n";*/
     }
 
     //Cleanup 
     delete currentFruit;
     currentFruit = nullptr; //Sets reference to null
    
-    //It is easy to check if something is nullptr
-    //If (currentFruit == nullptr) 
-    //return;
-
-    //if (!currentFruit)
-    //return;
-
-    std::cout << "\nI'm done with you.\n";
+    std::cout << "\nSee you soon!.\n";
 
 }
 

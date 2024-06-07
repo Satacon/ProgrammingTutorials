@@ -6,10 +6,6 @@ public:
 	Fruit();
 	~Fruit();
 
-protected:
-	int randRange(int min, int max);
-	float randRange(float min, float max);
-
 public:
 	//print the stats of the fruit and returns it name
 	std::string inspect();

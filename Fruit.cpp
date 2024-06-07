@@ -1,14 +1,15 @@
 #include "Fruit.h"
+#include "Random.h"
 #include <iostream>
 
 
 //Constructor of default fruit
 Fruit::Fruit()
 {
-    name = names[randRange(0, 6)];
-    ripeness = randRange(1.0f, 5.0f);
-    size = randRange(3.0f, 10.f);
-    appeal = randRange(1.0f, 10.0f);
+    name = names[Random::randRange(0, 6)];
+    ripeness = Random::randRange(1.0f, 5.0f);
+    size = Random::randRange(3.0f, 10.f);
+    appeal = Random::randRange(1.0f, 10.0f);
     hp = size + ripeness;
 }
 
@@ -18,19 +19,6 @@ Fruit::~Fruit()
     // Generally, the object that allocates memory must also delete that memory
     // In other words the object that calls new should also call delete.
     // The destructor is the place where delete is typically called.
-}
-
-int Fruit::randRange(int min, int max)
-{
-	int range = max - min + 1;
-	return  (rand() % range) + min;
-}
-
-float Fruit::randRange(float min, float max)
-{
-	float number = (float)rand() / (float)RAND_MAX;
-	float range = max - min;
-	return (number * range) + min;
 }
 
 std::string Fruit::inspect()
@@ -46,7 +34,7 @@ std::string Fruit::inspect()
 
 float Fruit::calculateDamage()
 {
-    float damage = 1 + size / appeal;
+    float damage = (appeal / Random::randRange(2.0f, 4.0f));
     return damage;
 }
 
