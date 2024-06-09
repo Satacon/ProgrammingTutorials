@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include "Actor.h"
+#include "Scene.h"
 #include <iostream>
+#include <conio.h>
 
 Engine::Engine()
 {
@@ -14,26 +16,33 @@ Engine::~Engine()
 void Engine::run()
 {
 	//Construct objects
-	Actor* testGuy = new Actor();
-	// Initialize
-	testGuy->initialize();
+	Scene* map = new Scene();
+	Actor* player = new Actor('P');
+	Actor* npc = new Actor('N');
+	npc->icon = '#';	
+	map->add(player);
+	map->add(npc);
+	player->x = 2;
+	player->y = 3;
 
 	// Main Loop
-	std::string input = "";
-	while (!gameShouldClose) {
+	while (!gameShouldClose && input!= 27) {
 
 		// Update
-		testGuy->update();
+		map->update();
 		// Draw
 		std::system("cls");
-		testGuy->draw();
+		map->draw();
 		// Get Input
 		std::cout << "\n";
-		std::cin >> input;
+		input = _getch();
 	}
 
 	// Cleanup
-	delete testGuy;
+	delete map;
+	delete player;
+	delete npc;
 }	
 
 bool Engine::gameShouldClose = false;
+char Engine::input = NULL;

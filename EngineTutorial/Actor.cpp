@@ -1,18 +1,13 @@
 #include "Actor.h"
 #include <iostream>
 
-Actor::Actor()
+Actor::Actor(char symbol)
 {
-
+	icon = symbol;
 }
 
 Actor::~Actor()
 {
-}
-
-void Actor::initialize()
-{
-
 }
 
 void Actor::update()
@@ -22,5 +17,5 @@ void Actor::update()
 
 void Actor::draw()
 {
-	std::cout << "Actor";
+	std::cout << icon;
 }

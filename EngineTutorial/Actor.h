@@ -3,14 +3,16 @@
 class Actor
 {
 public:
-	Actor();
+	Actor(char symbol);
 	~Actor();
-
-	void initialize();
 
 	void update();
 
 	void draw();
 
+	char icon = '@';
+
+	int x = 0;
+	int y = 0;
 };
 
