@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6cd0a0a6-0e69-496b-9b9e-a036548ce2f6}</ProjectGuid>
-    <RootNamespace>ProgrammingTutorials</RootNamespace>
+    <ProjectGuid>{ae090377-10a2-4607-aaca-cc611b367679}</ProjectGuid>
+    <RootNamespace>EngineTutorial</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>FruitGame</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,17 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Apple.cpp" />
-    <ClCompile Include="Cherry.cpp" />
-    <ClCompile Include="Fruit.cpp" />
-    <ClCompile Include="ProgrammingTutorials.cpp" />
-    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="EngineTutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Apple.h" />
-    <ClInclude Include="Cherry.h" />
-    <ClInclude Include="Fruit.h" />
-    <ClInclude Include="Random.h" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Engine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

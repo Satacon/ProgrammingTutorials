@@ -1,0 +1,13 @@
+#pragma once
+
+class Engine
+{
+public:
+	Engine();
+	~Engine();
+
+	void run();
+
+	static bool gameShouldClose;
+};
+
